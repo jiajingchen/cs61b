@@ -10,13 +10,16 @@ public class nuke2{
    *             user's input or opening the connection.
    */
   public static void main(String[] arg){
-  	String news = null;
+  	String news = "";
+    String extract = "";
   	if (arg!=null){
-  		news=arg[0]+""+arg[1];
+  		news=arg[0];
+      extract = news.substring(0,1)+news.substring(2,news.length());
   	}
 
 
-  	System.out.print(news);
+  	//System.out.println(news);
+    System.out.println(extract);
 
   }
 }
