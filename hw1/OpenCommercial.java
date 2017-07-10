@@ -27,7 +27,7 @@ class OpenCommercial {
     System.out.flush();        /* Make sure the line is printed immediately. */
     inputLine = keyboard.readLine();
 
-    String stringurl="www."+inputLine+".com";
+    String stringurl="http://www."+inputLine+".com";
     System.out.print(stringurl);
     URL url = new URL(stringurl);
     try
