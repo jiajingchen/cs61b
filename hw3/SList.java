@@ -11,7 +11,6 @@
 public class SList {
 
   private SListNode head;
-  private SListNode tail;
   private int size;
 
   /**
@@ -21,7 +20,6 @@ public class SList {
   public SList() {
     size = 0;
     head = null;
-    tail = null;
   }
 
   /**
@@ -48,16 +46,7 @@ public class SList {
    **/
 
   public void insertFront(Object obj) {
-    if(size==0){
-      head = new SListNode(obj);
-      tail= head;
-
-    }
-    else{
-      head = new SListNode(obj,head);
-
-    }
-    
+    head = new SListNode(obj, head);
     size++;
   }
 
@@ -67,7 +56,7 @@ public class SList {
    **/
 
   public void insertEnd(Object obj) {
-    /*if (head == null) {
+    if (head == null) {
       head = new SListNode(obj);
     } else {
       SListNode node = head;
@@ -76,18 +65,7 @@ public class SList {
       }
       node.next = new SListNode(obj);
     }
-    size++; */
-    if(head==null){
-      head = new SListNode(obj);
-      tail =head ;
-      size++;
-
-    }
-    else{
-    tail.next= new SListNode(obj);
-    tail=tail.next;
     size++;
-  }
   }
 
   /**
@@ -114,7 +92,42 @@ public class SList {
       }
       return currentNode.item;
     }
-  } 
+  }
+
+  /**
+   *  squish() takes this list and, wherever two or more consecutive items are
+   *  equals(), it removes duplicate nodes so that only one consecutive copy
+   *  remains.  Hence, no two consecutive items in this list are equals() upon
+   *  completion of the procedure.
+   *
+   *  After squish() executes, the list may well be shorter than when squish()
+   *  began.  No extra items are added to make up for those removed.
+   *
+   *  For example, if the input list is [ 0 0 0 0 1 1 0 0 0 3 3 3 1 1 0 ], the
+   *  output list is [ 0 1 0 3 1 0 ].
+   *
+   *  IMPORTANT:  Be sure you use the equals() method, and not the "=="
+   *  operator, to compare items.
+   **/
+
+  public void squish() {
+    // Fill in your solution here.  (Ours is eleven lines long.)
+  }
+
+  /**
+   *  twin() takes this list and doubles its length by replacing each node
+   *  with two consecutive nodes referencing the same item.
+   *
+   *  For example, if the input list is [ 3 7 4 2 2 ], the
+   *  output list is [ 3 3 7 7 4 4 2 2 2 2 ].
+   *
+   *  IMPORTANT:  Do not try to make new copies of the items themselves.
+   *  Make new SListNodes, but just copy the references to the items.
+   **/
+
+  public void twin() {
+    // Fill in your solution here.  (Ours is seven lines long.)
+  }
 
   /**
    *  toString() converts the list to a String.
@@ -145,16 +158,6 @@ public class SList {
    **/
 
   public static void main (String[] args) {
-    // Fill in your solution for Part I here.
-    SList s = new SList();
-    s.insertFront(12);
-
-    s.insertFront(9);
-    s.insertFront(6);
-    s.insertFront(3);
-    s.insertEnd(15);
-    System.out.println(s.toString());
-
     testEmpty();
     testAfterInsertFront();
     testAfterInsertEnd();
