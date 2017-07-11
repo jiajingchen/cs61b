@@ -21,7 +21,7 @@ public class Homework3 {
   public static void smoosh(int[] ints) {
     // Fill in your solution here.  (Ours is twelve lines long, not counting
     // blank lines or lines already present in this file.)
-    if (ints==null){
+    /*if (ints==null){
       ints=null;
     }
     else{
@@ -31,7 +31,7 @@ public class Homework3 {
       slist.insertEnd(ints[0]);
       for (int i =1;i<ints.length;i++){
         for(int j =1;j<=slist.length();j++){
-          if(ints[i].equals(int(slist.nth(j))){
+          if(ints[i].equals(slist.nth(j))){
             repeat++;
             break;
           }
@@ -46,6 +46,20 @@ public class Homework3 {
       for(int n=0;n<ints.length;n++){
         ints[n]=slist.nth(n);
       }
+    }*/
+
+
+    int tempint=ints[0];
+    int j=1;
+    for(int i=1;i<ints.length;i++){
+      if(ints[i]!=tempint){
+        ints[j]=ints[i];
+        j++;
+      }
+      tempint=ints[i];
+    }
+    for(int k=j;k<ints.length;k++){
+      ints[k]= -1;
     }
   }
 
