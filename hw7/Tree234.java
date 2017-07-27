@@ -102,6 +102,33 @@ public class Tree234 extends IntDictionary {
    **/
   public void insert(int key) {
     // Fill in your solution here.
+
+    Tree234Node node = root;
+    while (node != null) {
+      if (key < node.key1) {
+        node = node.child1;
+      } else if (key == node.key1) {
+        return;
+      } else if ((node.keys == 1) || (key < node.key2)) {
+        node = node.child2;
+      } else if (key == node.key2) {
+        return ;
+      } else if ((node.keys == 2) || (key < node.key3)) {
+        node = node.child3;
+      } else if (key == node.key3) {
+        return ;
+      } else {
+        node = node.child4;
+      }
+    }
+    if (node.parent.keys<=2){
+      node.parent.keys++;
+      node= new Tree234Node(key);
+    }else{
+      Tree234Node par=node.parent;
+      Tree234Node mid=node.parent.parent.child3;
+    }
+
   }
 
 

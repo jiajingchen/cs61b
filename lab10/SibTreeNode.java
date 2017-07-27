@@ -78,7 +78,14 @@ class SibTreeNode extends TreeNode {
    */
   public TreeNode parent() throws InvalidNodeException {
     // REPLACE THE FOLLOWING LINE WITH YOUR SOLUTION TO PART I.
-    return null;
+    if (!isValidNode()){
+      throw new InvalidNodeException();
+    }
+    if (this.parent == null){
+      return new SibTreeNode();
+    }
+
+    return this.parent;
   }
 
   /**
@@ -133,7 +140,32 @@ class SibTreeNode extends TreeNode {
    */
   public void insertChild(Object item, int c) throws InvalidNodeException {
     // FILL IN YOUR SOLUTION TO PART II HERE.
-  }
+    if (!isValidNode()) {
+      throw new InvalidNodeException();}
+    int n= this.children();
+    SibTreeNode newchild = new SibTreeNode(myTree,item);
+    newchild.parent=this;
+    SibTreeNode cur = this.firstChild;
+    if (c<=1){
+      c=1;}
+
+    if (c==1 || firstChild == null){
+      newchild.nextSibling = firstChild;
+      firstChild = newchild;
+      myTree.size++;
+      return;
+    }
+    for (int i =1; i<c-1&&cur.nextSibling!=null ;i++){
+      cur = cur.nextSibling;
+    }
+    newchild.nextSibling = cur.nextSibling;
+    cur.nextSibling = newchild;
+    myTree.size++;
+
+
+      }
+
+    
 
   /**
    *  removeLeaf() removes the node at the current position from the tree if
@@ -143,6 +175,33 @@ class SibTreeNode extends TreeNode {
    */
   public void removeLeaf() throws InvalidNodeException {
     // FILL IN YOUR SOLUTION TO PART III HERE.
+    if (!isValidNode()){
+      throw new InvalidNodeException();
+    }
+    if (firstChild==null && parent ==null){
+      valid= false;
+      myTree.size--;
+      myTree.root= null;
+      return;
+      
+    }
+    SibTreeNode cur = parent.firstChild;
+    if (this==cur){
+      valid=false;
+      if(nextSibling==null){
+        parent.firstChild=null;
+      }else{
+        parent.firstChild=nextSibling;
+      }
+      myTree.size--;
+    }else{
+      while(cur.nextSibling!=this){
+        cur=cur.nextSibling;
+      }
+      cur.nextSibling=this.nextSibling;
+      valid = false;
+      myTree.size--;
+    }
   }
 
 }
